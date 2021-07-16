@@ -1,3 +1,7 @@
+// Icons
+import "remixicon/fonts/remixicon.css";
+// Core Styles
 import "../scss/bundle.scss";
-
-console.log("App Ready");
+// Core Javascript
+import "./utils/show-menu.js";
+import "./utils/nav-link.js";

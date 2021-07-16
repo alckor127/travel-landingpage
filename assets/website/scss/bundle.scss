@@ -1,4 +1,10 @@
-body {
-  background-color: pink;
-  color: brown;
-}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@500;600;700&display=swap");
+
+@import "utils/variables";
+
+@import "utils/base";
+@import "utils/reusable";
+@import "utils/header";
+@import "utils/navs";
+@import "utils/buttons";
+@import "utils/sections/home";
