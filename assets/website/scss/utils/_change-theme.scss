@@ -1,0 +1,22 @@
+.nav__dark {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+  position: absolute;
+  left: 3rem;
+  bottom: 4rem;
+
+  .change-theme-icon,
+  .change-theme-name {
+    color: var(--text-color);
+  }
+
+  .change-theme-icon {
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .change-theme-name {
+    font-size: var(--small-text-size);
+  }
+}

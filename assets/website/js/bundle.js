@@ -12,3 +12,4 @@ import "./utils/scroll-smooth.js";
 import "./utils/scroll-up.js";
 import "./utils/swipers.js";
 import "./utils/video.js";
+import "./utils/change-theme.js";
