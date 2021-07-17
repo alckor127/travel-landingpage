@@ -6,7 +6,7 @@
   z-index: var(--z-fixed);
   background-color: transparent;
 
-  &.scroll-header {
+  &.scrolling {
     background-color: var(--body-color);
     box-shadow: 0 0 4px hsla(var(--hue-color), 64%, 15%, 0.15);
 
