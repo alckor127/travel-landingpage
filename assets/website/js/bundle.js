@@ -1,7 +1,10 @@
-// Icons
+// Plugin styles
 import "remixicon/fonts/remixicon.css";
-// Core Styles
+import "swiper/swiper-bundle.css";
+// Core styles
 import "../scss/bundle.scss";
-// Core Javascript
+// Core javascript
 import "./utils/show-menu.js";
 import "./utils/nav-link.js";
+import "./utils/scroll-header.js";
+import "./utils/swipers.js";
