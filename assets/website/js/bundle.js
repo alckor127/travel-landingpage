@@ -8,3 +8,4 @@ import "./utils/show-menu.js";
 import "./utils/nav-link.js";
 import "./utils/scroll-header.js";
 import "./utils/swipers.js";
+import "./utils/video.js";
