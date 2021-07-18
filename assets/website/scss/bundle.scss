@@ -12,6 +12,7 @@
 @import "utils/scrollup";
 @import "utils/scrollbar";
 @import "utils/change-theme";
+
 @import "utils/sections/home";
 @import "utils/sections/about";
 @import "utils/sections/discover";
@@ -20,3 +21,5 @@
 @import "utils/sections/place";
 @import "utils/sections/subscribe";
 @import "utils/sections/sponsor";
+
+@import "utils/responsive";

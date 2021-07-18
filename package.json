@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "remixicon": "^2.5.0",
+        "scrollreveal": "^4.0.9",
         "swiper": "^6.7.5"
     }
 }
