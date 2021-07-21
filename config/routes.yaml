@@ -3,5 +3,10 @@ app_index:
   controller: App\Controller\WebsiteController::index
 
 cms_index:
-  path: /admin
+  path: /admin/{page}/{action}/{var1}/{var2}
   controller: App\Controller\AdminController::index
+  defaults:
+    page: null
+    action: null
+    var1: null
+    var2: null
