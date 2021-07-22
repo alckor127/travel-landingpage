@@ -1,9 +1,9 @@
 import React from "react";
-import { CSpinner } from "@coreui/react";
+import { SpinFadeCircle } from "../spinners";
 
 const Loading = () => (
-  <div className="pt-3 text-center">
-    <CSpinner />
+  <div className="loading__container">
+    <SpinFadeCircle size="large" /> Loading... wait please.
   </div>
 );
 

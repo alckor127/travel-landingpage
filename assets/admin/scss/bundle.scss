@@ -1,13 +1,7 @@
-// If you want to override variables do it here
 @import "variables";
 
-$enable-ltr: true;
-$enable-rtl: true;
+@import "base";
+@import "loading";
 
-// Import CoreUI for React components library
-@import "@coreui/coreui/scss/coreui";
-
-@import "layout";
-
-// If you want to add custom CSS you can put it here.
-@import "custom";
+// spinners
+@import "spinners/fade-circle";
