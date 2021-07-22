@@ -5,8 +5,7 @@ import cx from "classnames";
 const FadeCircle = ({ size, className, ...rest }) => {
   const classNames = cx({
     ["spin__fade-circle"]: true,
-    // [styles[`spin-fade-circle-${color}`]]: color,
-    // [styles[`spin-fade-circle-${size}`]]: size,
+    [`spin__fade-circle-${size}`]: size,
     [className]: className,
   });
 
@@ -28,9 +27,9 @@ const FadeCircle = ({ size, className, ...rest }) => {
   );
 };
 
-FadeCircle.defaultProps = {
-  size: false,
-};
+// FadeCircle.defaultProps = {
+//   size: "",
+// };
 
 FadeCircle.propTypes = {
   size: PropTypes.oneOf(["small", "large"]),

@@ -1,8 +1,11 @@
 .loading__container {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+.preloading {
+  justify-content: center;
   width: 100vw;
   height: 100vh;
 }

@@ -111,6 +111,16 @@
       }
     }
   }
+
+  &-small {
+    width: $spin-small-width;
+    height: $spin-small-height;
+  }
+
+  &-large {
+    width: $spin-large-width;
+    height: $spin-large-height;
+  }
 }
 
 @keyframes fadeCircle {
