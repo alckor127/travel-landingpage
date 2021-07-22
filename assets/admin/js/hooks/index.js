@@ -1,1 +1,1 @@
-export { useStorage } from "./useStorage";
+export { useStorage } from "./use-storage";

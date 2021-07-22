@@ -11,7 +11,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = useCallback((data) => {
-    console.log(data);
+    console.log(data, isSubmitting);
   }, []);
 
   return (
@@ -33,7 +33,9 @@ const Login = () => {
         />
       </div>
       <div>
-        <button type="submit">Login</button>
+        <button type="submit" disabled={isSubmitting}>
+          Login
+        </button>
         <Link to="/forgot-password">Forgot password</Link>
       </div>
     </form>
