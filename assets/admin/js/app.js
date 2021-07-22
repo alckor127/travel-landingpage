@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Loading from "./components/loading";
 import { PrivateRoute } from "./components/route";
-// lazy load
 // layouts
 const DefaultLayout = React.lazy(() => import("./layouts/default/layout"));
 // pages

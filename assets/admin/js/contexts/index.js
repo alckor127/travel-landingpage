@@ -1,4 +1,4 @@
 // contexts
-export { AuthContext } from "./authContext";
+export { AuthContext } from "./auth-context";
 // context providers
-export { AuthProvider } from "./providers/authProvider";
+export { AuthProvider } from "./providers/auth-provider";
