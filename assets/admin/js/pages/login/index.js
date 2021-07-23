@@ -12,6 +12,7 @@ const Login = () => {
 
   const onSubmit = useCallback((data) => {
     console.log(data, isSubmitting);
+    console.log(process.env.API_URL);
   }, []);
 
   return (
