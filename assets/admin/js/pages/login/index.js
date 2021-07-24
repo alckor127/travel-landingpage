@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import CIcon from "@coreui/icons-react";
 import { Form, FormLabel, FormControl } from "../../components/form";
+import { Button } from "../../components/button";
 import { SpinFadeCircle as Spinner } from "../../components/spinner";
 
 const Login = () => {
@@ -48,14 +49,16 @@ const Login = () => {
               {...register("password")}
             />
           </div>
-          <button
+          <Button
             type="submit"
-            className="button button-round button-flex login__button"
+            className="login__button"
+            display="flex"
             disabled={isSubmitting}
+            round
           >
             {/* <Spinner /> Logging... */}
             Login
-          </button>
+          </Button>
           <Link
             to="/forgot-password"
             className="button button-link login__link"
