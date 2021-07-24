@@ -5,6 +5,7 @@
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "core-js": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^10.0.0",
     "file-loader": "^6.2.0",
     "prop-types": "^15.7.2",
@@ -31,5 +32,10 @@
     "remixicon": "^2.5.0",
     "scrollreveal": "^4.0.9",
     "swiper": "^6.7.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
