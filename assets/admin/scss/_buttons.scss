@@ -1,0 +1,39 @@
+.button {
+  box-sizing: border-box;
+  font-size: $font-size;
+  font-weight: 600;
+  padding: 0.5rem 18px;
+  line-height: 1.75;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #66615b;
+  border: 2px solid #66615b;
+  color: #fff;
+  opacity: 1;
+  transition: all 0.15s linear;
+
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &-round {
+    border-radius: 30px;
+  }
+
+  &-link {
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}

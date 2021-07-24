@@ -1,6 +1,7 @@
 import { sygnet } from "./sygnet";
 import { logo } from "./logo";
 import { logoNegative } from "./logo-negative";
+import { biHeart } from "./bi-heart";
 
 import {
   cibSkype,
@@ -72,6 +73,7 @@ import {
   cilFullscreen,
   cilFullscreenExit,
   cilGraph,
+  cilHeart,
   cilHome,
   cilInbox,
   cilIndentDecrease,
@@ -133,6 +135,7 @@ export const icons = Object.assign(
     sygnet,
     logo,
     logoNegative,
+    biHeart,
   },
   {
     cilAlignCenter,
@@ -176,6 +179,7 @@ export const icons = Object.assign(
     cilFullscreen,
     cilFullscreenExit,
     cilGraph,
+    cilHeart,
     cilHome,
     cilInbox,
     cilIndentDecrease,

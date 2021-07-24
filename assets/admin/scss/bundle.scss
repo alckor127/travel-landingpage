@@ -1,8 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap");
+
 @import "variables";
 
 @import "base";
+@import "buttons";
+@import "cards";
+@import "containers";
+@import "forms";
 @import "loading";
 
 // spinners
 @import "spinners/fade-circle";
 @import "spinners/pulse";
+
+// pages
+@import "pages/login";

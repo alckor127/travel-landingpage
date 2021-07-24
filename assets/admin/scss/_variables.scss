@@ -1,9 +1,15 @@
+// fonts
+$font-family: "Montserrat", sans-serif !default;
+$font-size: 0.875rem !default;
+$h3-font-size: 1.825rem !default;
+$h6-font-size: $font-size;
+
 // spinners
-$spin-small-width: 1rem;
-$spin-small-height: 1rem;
+$spin-small-width: 1rem !default;
+$spin-small-height: 1rem !default;
 
-$spin-normal-width: 1.5rem;
-$spin-normal-height: 1.5rem;
+$spin-normal-width: 1.5rem !default;
+$spin-normal-height: 1.5rem !default;
 
-$spin-large-width: 2rem;
-$spin-large-height: 2rem;
+$spin-large-width: 2rem !default;
+$spin-large-height: 2rem !default;
