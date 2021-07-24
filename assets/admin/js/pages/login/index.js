@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import CIcon from "@coreui/icons-react";
+import { Form, FormLabel, FormControl } from "../../components/form";
 import { SpinFadeCircle as Spinner } from "../../components/spinner";
 
 const Login = () => {
@@ -24,32 +25,25 @@ const Login = () => {
       }}
     >
       <div className="login__container container">
-        <form
-          className="login__form card"
-          onSubmit={handleSubmit(onSubmit)}
-          role="form"
-        >
+        <Form className="login__form card" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="login__form-title card-title">Login</h3>
-          <label htmlFor="username">E-mail</label>
+          <FormLabel htmlFor="username">E-mail</FormLabel>
           <div className="login__form-group">
             <CIcon name="cil-user" />
-            <input
-              type="text"
-              name="username"
+            <FormControl
               placeholder="Username"
-              className="login__form-control form-control"
+              className="login__form-control"
               autoComplete="off"
               {...register("username")}
             />
           </div>
-          <label htmlFor="password">Password</label>
+          <FormLabel htmlFor="password">Password</FormLabel>
           <div className="login__form-group">
             <CIcon name="cil-lock-locked" />
-            <input
+            <FormControl
               type="password"
-              name="password"
               placeholder="Password"
-              className="login__form-control form-control"
+              className="login__form-control"
               autoComplete="off"
               {...register("password")}
             />
@@ -68,7 +62,7 @@ const Login = () => {
           >
             Forgot password?
           </Link>
-        </form>
+        </Form>
         <div className="login__footer">
           <h6>
             © 2021, MADE WITH{" "}
