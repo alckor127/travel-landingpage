@@ -78,7 +78,6 @@ const Login = () => {
           <Button
             type="submit"
             className="login__button"
-            display="flex"
             disabled={isSubmitted}
             round
           >
