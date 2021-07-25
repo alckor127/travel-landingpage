@@ -1,13 +1,17 @@
+import api from "../../apis/authentication";
+
 const AuthAction = {
   login: (username, password) => {
     return async (dispatch) => {
       try {
+        const res = await api.login(username, password);
+
         dispatch({
           type: "LOGGING",
-          payload: true,
+          payload: res.content ? true : false,
         });
 
-        return { status: 200, message: "" };
+        return res;
       } catch (err) {
         return err;
       }

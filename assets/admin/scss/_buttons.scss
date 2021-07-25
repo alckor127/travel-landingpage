@@ -16,6 +16,13 @@
     cursor: pointer;
   }
 
+  &.disabled,
+  &:disabled,
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &-round {
     border-radius: 30px;
   }

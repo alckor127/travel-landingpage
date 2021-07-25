@@ -1,11 +1,10 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import CIcon from "@coreui/icons-react";
 import { Form, FormLabel, FormControl } from "../../components/form";
 import { Button } from "../../components/button";
-// import { SpinFadeCircle as Spinner } from "../../components/spinner";
 import { AuthContext } from "../../contexts";
 import { AuthAction } from "../../redux/actions";
 
@@ -17,20 +16,25 @@ const Login = () => {
   const { setSession } = useContext(AuthContext);
 
   const {
-    register,
+    formState: { isSubmitted },
     handleSubmit,
-    formState: { isSubmitting },
+    register,
+    reset,
   } = useForm();
 
   const onSubmit = useCallback(
     (data) => {
       dispatch(AuthAction.login(data.username, data.password)).then(
         (res) => {
-          setSession({ token: "7iY3vAEeCg" });
-
-          history.push("/");
-
           console.log("res", res);
+
+          if (res && res.content && res.content.token) {
+            setSession(res.content);
+
+            history.push("/");
+          }
+
+          reset();
         },
         (err) => {
           console.log("err", err);
@@ -39,6 +43,8 @@ const Login = () => {
     },
     [dispatch]
   );
+
+  useEffect(() => console.log("isSubmitted", isSubmitted), [isSubmitted]);
 
   return (
     <div
@@ -49,7 +55,7 @@ const Login = () => {
     >
       <div className="login__container container">
         <Form className="login__form card" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="login__form-title card-title">Login</h3>
+          <h3 className="login__form-title card-title">Sign in</h3>
           <FormLabel htmlFor="username">E-mail</FormLabel>
           <div className="login__form-group">
             <CIcon name="cil-user" />
@@ -75,11 +81,10 @@ const Login = () => {
             type="submit"
             className="login__button"
             display="flex"
-            disabled={isSubmitting}
+            disabled={isSubmitted}
             round
           >
-            {/* <Spinner /> Logging... */}
-            Login
+            {isSubmitted ? "Signing in..." : "Sign in"}
           </Button>
           <Link
             to="/forgot-password"
