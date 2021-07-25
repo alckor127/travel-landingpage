@@ -11,7 +11,7 @@ const Error404 = React.lazy(() => import("./pages/errors/404"));
 const Error500 = React.lazy(() => import("./pages/errors/500"));
 
 const App = () => (
-  <Router basename="admin">
+  <Router basename={process.env.BASE_NAME}>
     <React.Suspense fallback={Preloading()}>
       <Switch>
         <Route exact path="/login" component={Login} />

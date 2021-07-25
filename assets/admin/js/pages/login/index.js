@@ -1,22 +1,44 @@
-import React, { useCallback } from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import CIcon from "@coreui/icons-react";
 import { Form, FormLabel, FormControl } from "../../components/form";
 import { Button } from "../../components/button";
-import { SpinFadeCircle as Spinner } from "../../components/spinner";
+// import { SpinFadeCircle as Spinner } from "../../components/spinner";
+import { AuthContext } from "../../contexts";
+import { AuthAction } from "../../redux/actions";
 
 const Login = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const { setSession } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm();
 
-  const onSubmit = useCallback((data) => {
-    console.log(data, isSubmitting);
-    console.log(process.env.API_URL);
-  }, []);
+  const onSubmit = useCallback(
+    (data) => {
+      dispatch(AuthAction.login(data.username, data.password)).then(
+        (res) => {
+          setSession({ token: "7iY3vAEeCg" });
+
+          history.push("/");
+
+          console.log("res", res);
+        },
+        (err) => {
+          console.log("err", err);
+        }
+      );
+    },
+    [dispatch]
+  );
 
   return (
     <div

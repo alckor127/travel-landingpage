@@ -50,13 +50,14 @@ Encore.setOutputPath("public/build/admin")
   .enableBuildNotifications()
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
-  // .configureDefinePlugin((config) => {
-  //   const env = dotenv.config();
-
-  //   if (env.error) throw env.error;
-
-  //   config["process.env"].API_URL = JSON.stringify(env.parsed.API_URL);
-  // })
+  .configureDefinePlugin((config) => {
+    const env = dotenv.config();
+    if (env.error) throw env.error;
+    config["process.env"].BASE_NAME = JSON.stringify("admin");
+    config["process.env"].API_URL = JSON.stringify(
+      "http://travel-demo.devfran.com/api"
+    );
+  })
   .configureBabel((config) => {
     config.plugins.push("@babel/plugin-proposal-class-properties");
   })

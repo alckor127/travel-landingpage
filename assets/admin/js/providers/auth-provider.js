@@ -1,6 +1,6 @@
 import React from "react";
-import { AuthContext } from "../auth-context";
-import { useStorage } from "../../hooks";
+import { AuthContext } from "../contexts";
+import { useStorage } from "../hooks";
 
 const AuthProvider = ({ children }) => {
   const [session, setSession] = useStorage("session");
