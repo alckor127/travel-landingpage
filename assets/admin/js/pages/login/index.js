@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -44,8 +44,6 @@ const Login = () => {
     [dispatch]
   );
 
-  useEffect(() => console.log("isSubmitted", isSubmitted), [isSubmitted]);
-
   return (
     <div
       className="login__wrapper"
@@ -56,11 +54,11 @@ const Login = () => {
       <div className="login__container container">
         <Form className="login__form card" onSubmit={handleSubmit(onSubmit)}>
           <h3 className="login__form-title card-title">Sign in</h3>
-          <FormLabel htmlFor="username">E-mail</FormLabel>
+          <FormLabel htmlFor="username">E-mail address</FormLabel>
           <div className="login__form-group">
             <CIcon name="cil-user" />
             <FormControl
-              placeholder="Username"
+              placeholder="E-mail address"
               className="login__form-control"
               autoComplete="off"
               {...register("username")}
@@ -86,10 +84,7 @@ const Login = () => {
           >
             {isSubmitted ? "Signing in..." : "Sign in"}
           </Button>
-          <Link
-            to="/forgot-password"
-            className="button button-link login__link"
-          >
+          <Link to="/password-reset" className="button button-link login__link">
             Forgot password?
           </Link>
         </Form>
