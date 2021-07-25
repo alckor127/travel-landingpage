@@ -8,13 +8,14 @@
         <title>{% block title %}🌊 Travel Website!{% endblock %}</title>
 
         <link rel="shortcut icon" href="{{ asset("build/website/images/favicon.png") }}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="{{ asset("build/website/images/favicon.png") }}" type="image/x-icon" />
 
         {% block stylesheets %}
-            {{ encore_entry_link_tags("bundle", null, "websiteConfig") }}
+            {{ encore_entry_link_tags("bundle", null, "website") }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags("bundle", null, "websiteConfig") }}
+            {{ encore_entry_script_tags("bundle", null, "website") }}
         {% endblock %}
     </head>
     <body>
@@ -80,16 +81,16 @@
                         <p class="footer__description">Travel you choose the <br/> destination, we offer you the <br/> experience.</p> 
 
                         <div>
-                            <a href="" target="_blank" class="footer__social">
+                            <a href="#" target="_blank" class="footer__social">
                                 <i class="ri-facebook-box-fill"></i>
                             </a>
-                            <a href="" target="_blank" class="footer__social">
+                            <a href="#" target="_blank" class="footer__social">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                             <a href="" target="_blank" class="footer__social">
+                            <a href="#" target="_blank" class="footer__social">
                                 <i class="ri-instagram-fill"></i>
                             </a>
-                            <a href="" target="_blank" class="footer__social">
+                            <a href="#" target="_blank" class="footer__social">
                                 <i class="ri-youtube-fill"></i>
                             </a>
                         </div>

@@ -7,12 +7,15 @@
 
         <title>{% block title %}CMS - Travel Website!{% endblock %}</title>
 
+        <link rel="shortcut icon" href="{{ asset("build/website/images/favicon.png") }}" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="{{ asset("build/website/images/favicon.png") }}" type="image/x-icon" />
+
         {% block stylesheets %}
-            {{ encore_entry_link_tags("bundle", null, "adminConfig") }}
+            {{ encore_entry_link_tags("bundle", null, "admin") }}
         {% endblock %}
 
         {% block javascripts %}
-            {{ encore_entry_script_tags("bundle", null, "adminConfig") }}
+            {{ encore_entry_script_tags("bundle", null, "admin") }}
         {% endblock %}
     </head>
     <body>
