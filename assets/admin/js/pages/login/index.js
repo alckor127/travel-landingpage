@@ -28,6 +28,8 @@ const Login = () => {
         (res) => {
           console.log("res", res);
 
+          setSession({ token: true });
+
           if (res && res.content && res.content.token) {
             setSession(res.content);
 
@@ -77,13 +79,17 @@ const Login = () => {
           </div>
           <Button
             type="submit"
+            color="danger"
             className="login__button"
             disabled={isSubmitted}
             round
           >
             {isSubmitted ? "Signing in..." : "Sign in"}
           </Button>
-          <Link to="/password-reset" className="button button-link login__link">
+          <Link
+            to="/password-reset"
+            className="button button-link button-danger login__link"
+          >
             Forgot password?
           </Link>
         </Form>

@@ -1,35 +1,133 @@
 .button {
-  box-sizing: border-box;
-  font-size: $font-size;
-  font-weight: 600;
-  padding: 0.5rem 18px;
+  display: inline-block;
+  background-color: transparent;
+  border: $border-thick solid transparent;
+  font-size: $font-size-small;
+  font-weight: $font-weight-bold;
+  padding: 0.5rem $padding-base-horizontal;
   line-height: 1.75;
+  cursor: pointer;
   text-align: center;
   text-transform: uppercase;
-  background-color: #66615b;
-  border: 2px solid #66615b;
-  color: #fff;
-  opacity: 1;
-  transition: all 0.15s linear;
 
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
+  &.button-border,
+  &.button-link {
+    background-color: $transparent-bg;
   }
 
-  &.disabled,
+  @include button-styles($default-color, $default-states-color);
+  @include transition($fast-transition-time, linear);
+
+  &:hover,
+  &:focus {
+    outline: 0 !important;
+    @include box-shadow(none);
+  }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    @include box-shadow(none);
+    outline: 0 !important;
+  }
+
+  // &[class*="button-outline-"] {
+  //   background-image: none;
+  //   background-color: transparent;
+  // }
+
+  .nc-icon {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.button-primary {
+  @include button-styles($primary-color, $primary-states-color);
+}
+.button-success {
+  @include button-styles($success-color, $success-states-color);
+}
+.button-info {
+  @include button-styles($info-color, $info-states-color);
+}
+.button-warning {
+  @include button-styles($warning-color, $warning-states-color);
+}
+.button-danger {
+  @include button-styles($danger-color, $danger-states-color);
+}
+.button-neutral {
+  @include button-styles($white-color, $default-states-color);
+}
+
+.button-neutral {
+  @include button-styles($white-color, $white-color);
+  color: $default-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $default-states-color !important;
+  }
+
+  &.button-border {
+    &:hover,
+    &:focus {
+      color: $default-color;
+    }
+
+    &:active,
+    &.active,
+    .open > &.dropdown-toggle {
+      background-color: $white-color;
+      color: $default-color;
+    }
+  }
+  &.button-link:hover,
+  &.button-link:focus,
+  &.button-link:active {
+    color: $white-color !important;
+  }
+
+  &.button-link:focus:active {
+    color: $default-states-color !important;
+  }
+
+  &.button-link:active,
+  &.button-link.active {
+    background-color: transparent;
+  }
+}
+
+.button {
   &:disabled,
-  &[disabled] {
-    opacity: 0.5;
+  &[disabled],
+  &.disabled {
+    pointer-events: none;
     cursor: not-allowed;
+    @include opacity(0.5);
+  }
+}
+
+.button-link {
+  border-color: transparent !important;
+  padding: $padding-base-vertical $padding-base-horizontal;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    border-color: transparent;
   }
 
+  &.button-icon {
+    padding: $padding-base-vertical;
+  }
+}
+
+.button {
   &-round {
     border-radius: 30px;
-  }
-
-  &-link {
-    background-color: transparent;
-    border-color: transparent;
   }
 
   &-block {

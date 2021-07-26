@@ -49,13 +49,17 @@ const PasswordReset = () => {
           </div>
           <Button
             type="submit"
+            color="danger"
             className="login__button"
             disabled={isSubmitted}
             round
           >
             {isSubmitted ? "Sending..." : "Send password reset email"}
           </Button>
-          <Link to="/login" className="button button-link login__link">
+          <Link
+            to="/login"
+            className="button button-link button-danger login__link"
+          >
             Sign in
           </Link>
         </Form>

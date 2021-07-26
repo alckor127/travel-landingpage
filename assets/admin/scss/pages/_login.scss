@@ -76,28 +76,6 @@
     margin-top: 30px;
   }
 
-  &__button {
-    background-color: #f5593d;
-    border-color: #f5593d;
-    color: #fff;
-    opacity: 1;
-
-    &:hover:not(:disabled):not(.disabled) {
-      background-color: #f33816;
-      color: #fff;
-      border-color: #f33816;
-      box-shadow: none;
-    }
-  }
-
-  &__link {
-    opacity: 0.8;
-
-    &:hover:not(:disabled):not(.disabled) {
-      opacity: 1;
-    }
-  }
-
   &__footer {
     position: absolute;
     left: 0;
