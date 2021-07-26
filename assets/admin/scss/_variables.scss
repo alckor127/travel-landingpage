@@ -4,7 +4,7 @@
 // @import "variables/colors";
 // @import "variables/layout";
 // @import "variables/buttons";
-@import "variables/spinners";
+// @import "variables/spinners";
 
 $font-color: #66615b !default;
 $fill-font-color: rgba(255, 255, 255, 0.8);
@@ -42,23 +42,23 @@ $success-input-bg: #abf3cb !default;
 $other-medium-gray: #a49e93 !default;
 $transparent-bg: transparent !default;
 
-$default-color: #66615b !default;
-$default-bg: #66615b !default;
-$default-states-color: #403d39 !default;
+$default-color: #4c4f54 !default;
+$default-bg: #4c4f54 !default;
+$default-states-color: darken($default-color, 10%) !default;
 
-$primary-color: #51cbce !default;
+$primary-color: #4638c2 !default;
 $primary-states-color: darken($primary-color, 10%) !default;
 
-$success-color: #6bd098 !default;
+$success-color: #45a164 !default;
 $success-states-color: darken($success-color, 10%) !default;
 
-$info-color: #51bcda !default;
+$info-color: #4799eb !default;
 $info-states-color: darken($info-color, 10%) !default;
 
-$warning-color: #fbc658 !default;
+$warning-color: #e1a82d !default;
 $warning-states-color: darken($warning-color, 10%) !default;
 
-$danger-color: #f5593d !default;
+$danger-color: #d16767 !default;
 $danger-states-color: darken($danger-color, 8%) !default;
 
 $link-disabled-color: #666666 !default;
@@ -315,3 +315,11 @@ $zindex-select-dropdown: 1060 !default; // must be higher than a modal backgroun
 
 //** Placeholder text color
 $input-color-placeholder: #999 !default;
+
+//** Spinners
+$spinner-sm-width: 1rem !default;
+$spinner-sm-height: 1rem !default;
+$spinner-width: 1.5rem !default;
+$spinner-height: 1.5rem !default;
+$spinner-lg-width: 2rem !default;
+$spinner-lg-height: 2rem !default;

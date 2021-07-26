@@ -2,31 +2,31 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 
-const Pulse = ({ size, className, ...rest }) => {
+const SpinnerPulse = ({ size, className, ...rest }) => {
   const classNames = cx({
-    ["spin__pulse"]: true,
-    [`spin__pulse-${size}`]: size,
+    ["spinner-pulse"]: true,
+    [`spinner-pulse-${size}`]: size,
     [className]: className,
   });
 
   return (
     <div className={classNames} {...rest}>
-      <div className="spin__pulse-dot" />
-      <div className="spin__pulse-dot" />
-      <div className="spin__pulse-dot" />
-      <div className="spin__pulse-dot" />
-      <div className="spin__pulse-dot" />
-      <div className="spin__pulse-dot" />
+      <div className="spinner-pulse-dot" />
+      <div className="spinner-pulse-dot" />
+      <div className="spinner-pulse-dot" />
+      <div className="spinner-pulse-dot" />
+      <div className="spinner-pulse-dot" />
+      <div className="spinner-pulse-dot" />
     </div>
   );
 };
 
-// Pulse.defaultProps = {
+// SpinnerPulse.defaultProps = {
 //   size: "",
 // };
 
-Pulse.propTypes = {
-  size: PropTypes.oneOf(["small", "large"]),
+SpinnerPulse.propTypes = {
+  size: PropTypes.oneOf(["sm", "lg"]),
 };
 
-export { Pulse };
+export { SpinnerPulse };

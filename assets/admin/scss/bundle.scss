@@ -11,10 +11,8 @@
 @import "cards";
 @import "containers";
 @import "forms";
-@import "loading";
-@import "spinners/fade-circle";
-@import "spinners/pulse";
+@import "spinners";
 
-// pages
-@import "pages/layout";
+@import "layout";
+
 @import "pages/login";

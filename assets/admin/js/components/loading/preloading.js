@@ -1,9 +1,9 @@
 import React from "react";
-import { SpinPulse } from "../spinner";
+import { SpinnerPulse } from "../spinner";
 
 const Preloading = () => (
   <div className="preloading loading__container">
-    <SpinPulse size="large" /> Loading... wait please.
+    <SpinnerPulse size="lg" /> Loading... wait please.
   </div>
 );
 

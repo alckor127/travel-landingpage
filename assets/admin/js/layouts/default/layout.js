@@ -4,46 +4,43 @@ import CIcon from "@coreui/icons-react";
 
 const Layout = () => {
   return (
-    <div className="app-layout">
-      <aside className="sidebar">
-        <div className="sidebar-header">
-          <h3 className="brand">
-            <CIcon name="sygnet" />
-            <span>Easywire</span>
-          </h3>
-          <CIcon name="cil-menu" />
-        </div>
-        <div className="sidebar-menu">
-          <ul>
-            <li>
-              <Link to="/test">
-                <CIcon name="cib-github" />
-                <span>Dashboard</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/test">
-                <CIcon name="cib-github" />
-                <span>Module 1</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/test">
-                <CIcon name="cib-github" />
-                <span>Module 2</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/test">
-                <CIcon name="cib-github" />
-                <span>Module 3</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </aside>
+    <div className="app-layout dark-theme">
+      <div className="sidebar sidebar-lg-show sidebar-fixed">
+        <Link to="/" className="sidebar-brand">
+          <CIcon name="sygnet" />
+          <span>Easywire</span>
+        </Link>
 
-      <div className="main-content">
+        <ul className="sidebar-nav">
+          <li className="sidebar-nav-item">
+            <Link to="/" className="sidebar-nav-link active">
+              <CIcon name="cib-github" className="sidebar-nav-icon" />
+              Dashboard
+            </Link>
+          </li>
+          <li className="sidebar-nav-title">Theme</li>
+          <li className="sidebar-nav-item">
+            <Link to="/test" className="sidebar-nav-link">
+              <CIcon name="cib-github" className="sidebar-nav-icon" />
+              Module 1
+            </Link>
+          </li>
+          <li className="sidebar-nav-item">
+            <Link to="/test" className="sidebar-nav-link">
+              <CIcon name="cib-github" className="sidebar-nav-icon" />
+              Module 2
+            </Link>
+          </li>
+          <li className="sidebar-nav-item">
+            <Link to="/test" className="sidebar-nav-link">
+              <CIcon name="cib-github" className="sidebar-nav-icon" />
+              Module 3
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* <div className="main-content">
         <header>
           <div>
             <CIcon name="cil-search" />
@@ -146,7 +143,7 @@ const Layout = () => {
             </div>
           </div>
         </main>
-      </div>
+      </div> */}
 
       {/* <div className="main-content">
         <header>
