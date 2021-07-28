@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CIcon from "@coreui/icons-react";
 import { Link as Dropdown } from "../../components/link";
+import { Sidebar } from "../../components/sidebar";
+import { AppContext } from "../../contexts";
 
-const Sidebar = () => {
+const AppSidebar = () => {
+  const { sidebarShow, setSidebarShow, unfoldable } = useContext(AppContext);
+
   return (
-    <div className="sidebar sidebar-lg-show sidebar-fixed">
+    <Sidebar
+      position="fixed"
+      selfHiding="md"
+      unfoldable={unfoldable}
+      show={sidebarShow}
+      onShow={() => console.log("show")}
+      onHide={() => setSidebarShow(false)}
+    >
       <Link to="/" className="sidebar-brand">
         <CIcon name="sygnet" />
         <span>Easywire</span>
@@ -55,8 +66,8 @@ const Sidebar = () => {
           </Link>
         </li>
       </ul>
-    </div>
+    </Sidebar>
   );
 };
 
-export default Sidebar;
+export default AppSidebar;

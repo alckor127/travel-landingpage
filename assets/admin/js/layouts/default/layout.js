@@ -1,11 +1,11 @@
 import React from "react";
-import Sidebar from "./sidebar";
+import AppSidebar from "./app-sidebar";
 import Header from "./header";
 
 const Layout = () => {
   return (
     <div className="app-layout dark-theme">
-      <Sidebar />
+      <AppSidebar />
       <div className="wrapper">
         <Header />
       </div>

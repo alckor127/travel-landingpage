@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Preloading from "./components/loading/preloading";
 import { PrivateRoute } from "./components/route";
+import { AppProvider } from "./providers";
 // layouts
 const DefaultLayout = React.lazy(() => import("./layouts/default/layout"));
 // pages
@@ -18,7 +19,9 @@ const App = () => (
         <Route exact path="/password-reset" component={PasswordReset} />
         <Route exact path="/404" component={Error404} />
         <Route exact path="/500" component={Error500} />
-        <PrivateRoute path="/" component={DefaultLayout} />
+        <AppProvider>
+          <PrivateRoute path="/" component={DefaultLayout} />
+        </AppProvider>
       </Switch>
     </React.Suspense>
   </Router>
