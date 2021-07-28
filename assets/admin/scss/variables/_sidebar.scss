@@ -1,0 +1,17 @@
+$sidebar-bg: #3c4b64;
+$sidebar-color: #fff;
+$sidebar-elevation-shadow: 0 2px 2px 0 rgba($sidebar-bg, 0.14),
+  0 3px 1px -2px rgba($sidebar-bg, 0.12), 0 1px 5px 0 rgba($sidebar-bg, 0.2);
+$sidebar-transition: margin-left 0.15s, margin-right 0.15s, box-shadow 75ms,
+  transform 0.15s, width 0.15s, z-index 0s ease 0.15s;
+$sidebar-brand-bg: rgba(0, 0, 21, 0.2);
+$sidebar-brand-color: #fff;
+$sidebar-nav-dropdown-bg: rgba(0, 0, 0, 0.2);
+
+// dark theme
+
+$dark-sidebar-bg: #2a2b36;
+$dark-sidebar-color: #e1e1e1;
+$dark-sidebar-elevation-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$dark-sidebar-nav-dropdown-bg: $sidebar-nav-dropdown-bg;

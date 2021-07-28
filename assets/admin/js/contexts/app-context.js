@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 const AppContext = createContext({
-  sidebarShow: false,
+  sidebarShow: true,
   setSidebarShow: () => {},
   unfoldable: true,
   setUnfoldable: () => {},

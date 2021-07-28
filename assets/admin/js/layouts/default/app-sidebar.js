@@ -2,11 +2,16 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CIcon from "@coreui/icons-react";
 import { Link as Dropdown } from "../../components/link";
-import { Sidebar } from "../../components/sidebar";
+import {
+  Sidebar,
+  SidebarBrand,
+  SidebarToggler,
+} from "../../components/sidebar";
 import { AppContext } from "../../contexts";
 
 const AppSidebar = () => {
-  const { sidebarShow, setSidebarShow, unfoldable } = useContext(AppContext);
+  const { sidebarShow, setSidebarShow, unfoldable, setUnfoldable } =
+    useContext(AppContext);
 
   return (
     <Sidebar
@@ -17,10 +22,10 @@ const AppSidebar = () => {
       onShow={() => console.log("show")}
       onHide={() => setSidebarShow(false)}
     >
-      <Link to="/" className="sidebar-brand">
-        <CIcon name="sygnet" />
-        <span>Easywire</span>
-      </Link>
+      <SidebarBrand to="/">
+        <CIcon className="sidebar-brand-full" name="sygnet" height={35} />
+        <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} />
+      </SidebarBrand>
 
       <ul className="sidebar-nav">
         <li className="sidebar-nav-item">
@@ -36,7 +41,7 @@ const AppSidebar = () => {
             Module 1
           </Link>
         </li>
-        <li className="sidebar-nav-dropdown">
+        <li className="sidebar-nav-dropdown show">
           <Dropdown className="sidebar-nav-dropdown-toggle">
             <CIcon name="cib-github" customClasses="sidebar-nav-icon" />
             Dropdown 1
@@ -66,6 +71,8 @@ const AppSidebar = () => {
           </Link>
         </li>
       </ul>
+
+      <SidebarToggler onClick={() => setUnfoldable(!unfoldable)} />
     </Sidebar>
   );
 };

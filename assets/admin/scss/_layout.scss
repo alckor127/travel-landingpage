@@ -20,20 +20,17 @@
 .sidebar {
   position: relative;
   display: flex;
-  flex: 0 0 256px;
+  flex: 0 0 16rem;
   flex-direction: column;
   order: -1;
-  width: 256px;
+  width: 16rem;
   padding: 0;
-  box-shadow: none;
-  color: #fff;
-  background: #3c4b64;
-  transition: box-shadow 0.3s 0.15s, transform 0.3s, margin-left 0.3s,
-    margin-right 0.3s, width 0.3s, z-index 0s ease 0.3s;
+  color: $sidebar-color;
+  background: $sidebar-bg;
+  transition: $sidebar-transition;
 
   &-fixed {
     position: fixed;
-    left: 0;
     top: 0;
     bottom: 0;
     z-index: 1030;
@@ -41,16 +38,9 @@
 
   &-brand {
     display: flex;
-    flex: 0 0 56px;
+    flex: 0 0 4rem;
     align-items: center;
     justify-content: center;
-  }
-
-  & {
-    .sidebar-brand {
-      color: #fff;
-      background: rgba(0, 0, 21, 0.2);
-    }
   }
 
   &-nav {
@@ -63,7 +53,6 @@
     overflow-x: hidden;
     overflow-y: auto;
     list-style: none;
-    height: 100% !important;
 
     &-item {
       width: inherit;
@@ -71,7 +60,7 @@
 
     &-dropdown {
       position: relative;
-      transition: background 0.3s ease-in-out;
+      transition: background 0.15s ease-in-out;
 
       &.show {
         > .sidebar-nav-dropdown-items {
@@ -136,10 +125,36 @@
     }
   }
 
+  &-toggler {
+    display: flex;
+    flex: 0 0 3rem;
+    justify-content: flex-end;
+    width: inherit;
+    padding: 0;
+    cursor: pointer;
+    border: 0;
+
+    &::before {
+      display: block;
+      width: 4rem;
+      height: 3rem;
+      content: "";
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: 0.75rem;
+      transition: transform 0.15s;
+    }
+  }
+
   & {
+    .sidebar-brand {
+      color: $sidebar-brand-color;
+      background-color: $sidebar-brand-bg;
+    }
+
     .sidebar-nav-dropdown {
       &.show {
-        background: rgba(0, 0, 0, 0.2);
+        background: $sidebar-nav-dropdown-bg;
 
         .sidebar-nav-dropdown-toggle,
         .sidebar-nav-link {
@@ -175,6 +190,18 @@
     .sidebar-nav-title {
       color: hsla(0, 0%, 100%, 0.6);
     }
+
+    .sidebar-toggler {
+      background-color: rgba(0, 0, 21, 0.2);
+
+      &:hover {
+        background-color: rgba(0, 0, 21, 0.2);
+      }
+
+      &::before {
+        background-image: url("data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMSAxNCc+PHBhdGggZmlsbD0nIzhhOTNhMicgZD0nTTkuMTQ4IDIuMzUybC00LjE0OCA0LjE0OCA0LjE0OCA0LjE0OHEwLjE0OCAwLjE0OCAwLjE0OCAwLjM1MnQtMC4xNDggMC4zNTJsLTEuMjk3IDEuMjk3cS0wLjE0OCAwLjE0OC0wLjM1MiAwLjE0OHQtMC4zNTItMC4xNDhsLTUuNzk3LTUuNzk3cS0wLjE0OC0wLjE0OC0wLjE0OC0wLjM1MnQwLjE0OC0wLjM1Mmw1Ljc5Ny01Ljc5N3EwLjE0OC0wLjE0OCAwLjM1Mi0wLjE0OHQwLjM1MiAwLjE0OGwxLjI5NyAxLjI5N3EwLjE0OCAwLjE0OCAwLjE0OCAwLjM1MnQtMC4xNDggMC4zNTJ6Jy8+PC9zdmc+");
+      }
+    }
   }
 }
 
@@ -185,6 +212,7 @@
   min-width: 0;
   min-height: 100vh;
   transition: margin 0.3s;
+  margin-left: 16rem;
 
   &:not(.wrapper-fluid) {
     .header-fixed {
@@ -377,11 +405,11 @@
 
 .dark-theme {
   color: #e1e1e1;
-  background-color: #0a0b18;
+  background-color: #181924;
 
   .sidebar {
-    color: #e1e1e1;
-    background: #2c2c34;
+    color: $dark-sidebar-color;
+    background-color: $dark-sidebar-bg;
     border: 0;
 
     .sidebar-brand,
@@ -391,7 +419,7 @@
 
     .sidebar-nav-dropdown {
       &.show {
-        background: rgba(0, 0, 0, 0.2);
+        background: $dark-sidebar-nav-dropdown-bg;
 
         .sidebar-nav-dropdown-toggle,
         .sidebar-nav-link {
@@ -435,10 +463,22 @@
     .sidebar-nav-title {
       color: hsla(0, 0%, 100%, 0.6);
     }
+
+    .sidebar-toggler {
+      background-color: rgba(0, 0, 21, 0.2);
+
+      &:hover {
+        background-color: rgba(0, 0, 21, 0.3);
+      }
+
+      &::before {
+        background-image: url("data:image/svg+xml;charset=utf8;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMSAxNCc+PHBhdGggZmlsbD0ncmdiYSgyNTUsMjU1LDI1NSwwLjUpJyBkPSdNOS4xNDggMi4zNTJsLTQuMTQ4IDQuMTQ4IDQuMTQ4IDQuMTQ4cTAuMTQ4IDAuMTQ4IDAuMTQ4IDAuMzUydC0wLjE0OCAwLjM1MmwtMS4yOTcgMS4yOTdxLTAuMTQ4IDAuMTQ4LTAuMzUyIDAuMTQ4dC0wLjM1Mi0wLjE0OGwtNS43OTctNS43OTdxLTAuMTQ4LTAuMTQ4LTAuMTQ4LTAuMzUydDAuMTQ4LTAuMzUybDUuNzk3LTUuNzk3cTAuMTQ4LTAuMTQ4IDAuMzUyLTAuMTQ4dDAuMzUyIDAuMTQ4bDEuMjk3IDEuMjk3cTAuMTQ4IDAuMTQ4IDAuMTQ4IDAuMzUydC0wLjE0OCAwLjM1MnonLz48L3N2Zz4=");
+      }
+    }
   }
 
   .header {
-    background: #2c2c34;
+    background: #2a2b36;
     border-bottom: 0;
 
     .header-toggler {
@@ -462,8 +502,12 @@
 }
 
 html:not([dir="rtl"]) {
-  .sidebar:not(.sidebar-right) {
-    margin-left: -256px;
+  .sidebar {
+    border-right: 0 solid transparent;
+
+    &:not(.sidebar-end) {
+      margin-left: 0; // -256px;
+    }
   }
 
   .sidebar-nav-icon:first-child {
@@ -500,34 +544,59 @@ html:not([dir="rtl"]) {
   }
 }
 
-@media (min-width: 992px) {
-  html:not([dir="rtl"]) .sidebar.sidebar-fixed:not(.sidebar-right) {
-    left: 0;
-  }
-}
+@media (min-width: 768px) {
+  .sidebar {
+    &.sidebar-fixed {
+      box-shadow: $sidebar-elevation-shadow;
 
-@media (min-width: 992px) {
-  html:not([dir="rtl"]) .sidebar.sidebar-lg-show:not(.sidebar-right),
-  html:not([dir="rtl"]) .sidebar.sidebar-show:not(.sidebar-right) {
-    margin-left: 0;
+      &:not([class*="border"]) {
+        border: 0;
+      }
+    }
   }
-}
 
-@media (min-width: 992px) and (min-width: 992px) {
   html:not([dir="rtl"]) {
     .sidebar {
-      & {
-        &-lg-show,
-        &-show {
-          &:not(.sidebar-right) {
-            &.sidebar-fixed {
-              ~ .wrapper {
-                margin-left: 256px;
-              }
-            }
-          }
-        }
+      &.sidebar-fixed:not(.sidebar-end) {
+        left: 0;
+      }
+    }
+  }
+
+  .dark-theme {
+    .sidebar {
+      &.sidebar-fixed {
+        box-shadow: $dark-sidebar-elevation-shadow;
       }
     }
   }
 }
+
+@media (max-width: 991.98px) {
+  html:not([dir="rtl"]) {
+    .sidebar:not(.show) {
+      &.sidebar-self-hiding-md:not(.sidebar-end) {
+        margin-left: -16rem;
+      }
+    }
+  }
+}
+
+// @media (min-width: 992px) and (min-width: 992px) {
+//   html:not([dir="rtl"]) {
+//     .sidebar {
+//       & {
+//         &-lg-show,
+//         &-show {
+//           &:not(.sidebar-end) {
+//             &.sidebar-fixed {
+//               ~ .wrapper {
+//                 margin-left: 256px;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
