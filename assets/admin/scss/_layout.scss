@@ -225,8 +225,8 @@
 
     > .header-toggler-icon {
       position: relative;
-      width: 30px;
-      height: 26px;
+      width: 26px;
+      height: 22px;
       margin: 0 auto;
       transform: rotate(0deg);
       transition: 0.5s ease-in-out;
@@ -251,18 +251,18 @@
       }
 
       .middlebar {
-        top: 12px;
+        top: 9px;
       }
 
       .bottombar {
-        top: 22px;
+        top: 16px;
       }
     }
 
     &.open {
       > .header-toggler-icon {
         .topbar {
-          top: 12px;
+          top: 9px;
           transform: rotate(135deg);
         }
 
@@ -272,7 +272,7 @@
         }
 
         .bottombar {
-          top: 12px;
+          top: 9px;
           transform: rotate(-135deg);
         }
       }
@@ -301,11 +301,27 @@
     .header-nav-link {
       display: flex;
       align-items: center;
+      justify-content: center;
       padding-right: 0.5rem;
       padding-left: 0.5rem;
 
       &:hover {
         text-decoration: none;
+      }
+
+      .badge {
+        position: absolute;
+        top: 50%;
+        margin-top: -16px;
+      }
+    }
+
+    .header-nav-button {
+      background-color: transparent;
+      border: 0;
+
+      &:not(:disabled):not(.disabled) {
+        cursor: pointer;
       }
     }
   }
@@ -434,6 +450,16 @@ html:not([dir="rtl"]) {
       .sidebar-nav-dropdown-toggle,
       .sidebar-nav-link {
         padding-left: 56px;
+      }
+    }
+  }
+
+  .header-nav {
+    .header-nav-button,
+    .header-nav-link {
+      .badge {
+        left: 50%;
+        margin-left: 0;
       }
     }
   }
