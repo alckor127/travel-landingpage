@@ -1,10 +1,5 @@
 @import "variables/breakpoints";
 @import "variables/containers";
-// @import "variables/fonts";
-// @import "variables/colors";
-// @import "variables/layout";
-// @import "variables/buttons";
-// @import "variables/spinners";
 
 $font-color: #66615b !default;
 $fill-font-color: rgba(255, 255, 255, 0.8);
@@ -323,3 +318,6 @@ $spinner-width: 1.5rem !default;
 $spinner-height: 1.5rem !default;
 $spinner-lg-width: 2rem !default;
 $spinner-lg-height: 2rem !default;
+
+$link-color: saturate($primary-color, 20%) !default;
+$link-states-color: $link-color !default;
