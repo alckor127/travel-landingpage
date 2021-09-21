@@ -1,73 +1,109 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import {
+  CDropdown,
+  CDropdownItem,
+  CDropdownMenu,
+  CDropdownToggle,
+  CHeader,
+  CImg,
+  CToggler,
+  CHeaderBrand,
+  CHeaderNav,
+  CSubheader,
+  CBreadcrumbRouter,
+  CLink,
+} from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { Link as Dropdown } from "../../components/link";
-import { Badge } from "../../components/badge";
+import { AppContext } from "../../contexts";
+// routes config
+import { routes } from "../../routes";
 
 const Header = () => {
+  const { sidebarShow, setSidebarShow } = useContext(AppContext);
+
   return (
-    <header className="header header-fixed">
-      {/* header toggler */}
-      <button type="button" className="header-toggler">
-        <div className="header-toggler-icon">
-          <span className="topbar"></span>
-          <span className="middlebar"></span>
-          <span className="bottombar"></span>
-        </div>
-      </button>
-      {/* mobile header brand */}
-      {/* <Link to="/" className="header-brand">
-            <CIcon name="sygnet" />
-            <span>Easywire</span>
-          </Link> */}
-      <ul className="header-nav header-nav-left">
-        <li className="header-nav-item">
-          <Link to="/contact-us" className="header-nav-link">
-            Contact us
-          </Link>
-        </li>
-        <li className="header-nav-item">
-          <Link to="/support" className="header-nav-link">
-            Support
-          </Link>
-        </li>
-        <li className="header-nav-item">
-          <Link to="/settings" className="header-nav-link">
-            Settings
-          </Link>
-        </li>
-      </ul>
-      <ul className="header-nav">
-        <li className="header-nav-item">
-          <button className="header-nav-button">
-            <CIcon name="cil-sun" />
-          </button>
-        </li>
-        <li className="header-nav-item">
-          <button className="header-nav-button">
-            <CIcon name="cil-comment-square" />
-            <Badge color="danger" round>
-              10
-            </Badge>
-          </button>
-        </li>
-        <li className="header-nav-dropdown">
-          <Dropdown className="header-nav-dropdown-toggle">
-            <div className="user-wrapper">
-              <img
-                src={require("../../../images/avatar.png")}
-                className="user-avatar"
-                alt="Avatar"
+    <CHeader withSubheader>
+      <CToggler
+        inHeader
+        className="ml-md-3 d-lg-none"
+        onClick={() =>
+          setSidebarShow(
+            [true, "responsive"].includes(sidebarShow) ? true : "responsive"
+          )
+        }
+      />
+      <CToggler
+        inHeader
+        className="ml-3 d-md-down-none"
+        onClick={() =>
+          setSidebarShow(
+            [true, "responsive"].includes(sidebarShow) ? false : "responsive"
+          )
+        }
+      />
+      <CHeaderBrand className="mx-auto d-lg-none" to="/">
+        <CIcon name="logo" height="48" alt="Logo" />
+      </CHeaderBrand>
+
+      <CHeaderNav className="d-md-down-none mr-auto"></CHeaderNav>
+
+      <CHeaderNav className="px-3">
+        <CDropdown inNav className="c-header-nav-items mx-2" direction="down">
+          <CDropdownToggle className="c-header-nav-link" caret={false}>
+            <div className="c-avatar">
+              <CImg
+                src={
+                  "https://devweb2021.nativosdigitales.pe/build/images/nativos/hover/nativo-francisco.png"
+                }
+                className="c-avatar-img"
+                alt="admin@zima.pe"
               />
-              <div className="user-info">
-                <h4 className="username">Francisco Rios Vega</h4>
-                <small className="role">Administrator</small>
-              </div>
             </div>
-          </Dropdown>
-        </li>
-      </ul>
-    </header>
+            <div className="c-username">Francisco Luis</div>
+          </CDropdownToggle>
+          <CDropdownMenu className="pt-0" placement="bottom-end">
+            <CDropdownItem
+              header
+              tag="div"
+              color="light"
+              className="text-center"
+            >
+              <strong>Cuenta</strong>
+            </CDropdownItem>
+            <CDropdownItem>
+              <CIcon name="bi-person-circle" className="mfe-2" />
+              Gestionar cuenta
+            </CDropdownItem>
+            <CDropdownItem>
+              <CIcon name="bi-power" className="mfe-2" />
+              Cerrar sesión
+            </CDropdownItem>
+            <CDropdownItem divider />
+            <CDropdownItem>
+              <CIcon name="bi-question-circle" className="mfe-2" />
+              Centro de ayuda
+            </CDropdownItem>
+            <CDropdownItem>
+              <CIcon name="bi-briefcase" className="mfe-2" />
+              Contrata a un experto
+            </CDropdownItem>
+          </CDropdownMenu>
+        </CDropdown>
+      </CHeaderNav>
+
+      <CSubheader className="px-3 justify-content-between">
+        <CBreadcrumbRouter
+          className="border-0 c-subheader-nav m-0 px-0 px-md-3"
+          routes={routes}
+        />
+        {/* <div className="d-md-down-none mfe-2 c-subheader-nav">
+          <CLink className="c-subheader-nav-link" href="/settings">
+            <CIcon name="cil-settings" alt="Settings" />
+            &nbsp;Configuración
+          </CLink>
+        </div> */}
+      </CSubheader>
+    </CHeader>
   );
 };
 

@@ -1,7 +1,20 @@
 import { sygnet } from "./sygnet";
 import { logo } from "./logo";
 import { logoNegative } from "./logo-negative";
+
+import { biBasket } from "./bi-basket";
+import { biBriefcase } from "./bi-briefcase";
+import { biChevronDown } from "./bi-chevron-down";
+import { biChevronUp } from "./bi-chevron-up";
+import { biDashboard } from "./bi-dashboard";
+import { biFilter } from "./bi-filter";
 import { biHeart } from "./bi-heart";
+import { biPencil } from "./bi-pencil";
+import { biPersonCircle } from "./bi-person-circle";
+import { biPower } from "./bi-power";
+import { biQuestionCircle } from "./bi-question-circle";
+import { biSearch } from "./bi-search";
+import { biTrash } from "./bi-trash";
 
 import {
   cibSkype,
@@ -32,6 +45,7 @@ import {
 } from "@coreui/icons";
 import { cifUs, cifBr, cifIn, cifFr, cifEs, cifPl } from "@coreui/icons";
 import {
+  cilAccountLogout,
   cilAlignCenter,
   cilAlignLeft,
   cilAlignRight,
@@ -45,6 +59,7 @@ import {
   cilBell,
   cilBold,
   cilBookmark,
+  cilBriefcase,
   cilCalculator,
   cilCalendar,
   cilCloudDownload,
@@ -75,6 +90,7 @@ import {
   cilGraph,
   cilHeart,
   cilHome,
+  cilInfo,
   cilInbox,
   cilIndentDecrease,
   cilIndentIncrease,
@@ -136,9 +152,22 @@ export const icons = Object.assign(
     sygnet,
     logo,
     logoNegative,
+    biBriefcase,
+    biChevronDown,
+    biChevronUp,
+    biBasket,
+    biDashboard,
+    biFilter,
     biHeart,
+    biPencil,
+    biPersonCircle,
+    biPower,
+    biQuestionCircle,
+    biSearch,
+    biTrash,
   },
   {
+    cilAccountLogout,
     cilAlignCenter,
     cilAlignLeft,
     cilAlignRight,
@@ -152,6 +181,7 @@ export const icons = Object.assign(
     cilBell,
     cilBold,
     cilBookmark,
+    cilBriefcase,
     cilCalculator,
     cilCalendar,
     cilCloudDownload,
@@ -182,6 +212,7 @@ export const icons = Object.assign(
     cilGraph,
     cilHeart,
     cilHome,
+    cilInfo,
     cilInbox,
     cilIndentDecrease,
     cilIndentIncrease,

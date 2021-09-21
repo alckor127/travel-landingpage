@@ -1,10 +1,10 @@
 import React from "react";
-import { SpinnerPulse } from "../spinner";
+import { CSpinner } from "@coreui/react";
 
 const Preloading = () => (
-  <div className="preloading loading__container">
-    <SpinnerPulse size="lg" /> Loading... wait please.
+  <div className="c-preloading">
+    <CSpinner grow /> Loading... wait please!
   </div>
 );
 
-export default Preloading;
+export { Preloading };

@@ -1,11 +1,24 @@
 import React, { useCallback } from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {
+  CButton,
+  CCard,
+  CCardBody,
+  CCol,
+  CContainer,
+  CForm,
+  CInput,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
+  CRow,
+} from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { Form, FormLabel, FormControl } from "../../components/form";
-import { Button } from "../../components/button";
 
 const PasswordReset = () => {
+  const history = useHistory();
+
   const {
     formState: { isSubmitted },
     handleSubmit,
@@ -25,51 +38,62 @@ const PasswordReset = () => {
   );
 
   return (
-    <div
-      className="login__wrapper"
-      style={{
-        backgroundImage: `url(${require("../../../images/login-background.jpg")})`,
-      }}
-    >
-      <div className="login__container container">
-        <Form className="login__form card" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="login__form-title card-title">Reset your password</h3>
-          <FormLabel htmlFor="username">
-            Enter your user account's verified email address and we will send
-            you a password reset link.
-          </FormLabel>
-          <div className="login__form-group">
-            <CIcon name="cil-envelope-closed" />
-            <FormControl
-              placeholder="Enter your e-mail address"
-              className="login__form-control"
-              autoComplete="off"
-              {...register("username")}
-            />
-          </div>
-          <Button
-            type="submit"
-            color="danger"
-            className="login__button"
-            disabled={isSubmitted}
-            round
-          >
-            {isSubmitted ? "Sending..." : "Send password reset email"}
-          </Button>
-          <Link
-            to="/login"
-            className="button button-link button-danger login__link"
-          >
-            Sign in
-          </Link>
-        </Form>
-        <div className="login__footer">
-          <h6>
-            © 2021, MADE WITH{" "}
-            <CIcon name="bi-heart" className="login__footer-icon" /> BY ZIMA
-          </h6>
-        </div>
-      </div>
+    <div className="c-app c-default-layout flex-row align-items-center">
+      <CContainer>
+        <CRow className="justify-content-center">
+          <CCol md="5">
+            <CCard className="mx-4">
+              <CCardBody className="p-4">
+                <CForm onSubmit={handleSubmit(onSubmit)}>
+                  <h1>Reset your password</h1>
+                  <p className="text-muted">
+                    Enter your user account's verified email address and we will
+                    send you a password reset link.
+                  </p>
+                  <CInputGroup className="mb-3">
+                    <CInputGroupPrepend>
+                      <CInputGroupText>
+                        <CIcon name="cil-user" />
+                      </CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInput
+                      type="email"
+                      name="username"
+                      placeholder="Enter your email address"
+                      autoComplete="email"
+                      innerRef={register()}
+                    />
+                  </CInputGroup>
+                  <CRow>
+                    <CCol xs="12" md="8">
+                      <CButton
+                        type="submit"
+                        block
+                        color="primary"
+                        className="mx-auto px-4"
+                        disabled={isSubmitted}
+                      >
+                        {isSubmitted
+                          ? "Sending..."
+                          : "Send password reset email"}
+                      </CButton>
+                    </CCol>
+                    <CCol xs="12" md="4" className="text-right">
+                      <CButton
+                        color="link"
+                        className="px-0"
+                        onClick={() => history.push("/login")}
+                      >
+                        Sign in
+                      </CButton>
+                    </CCol>
+                  </CRow>
+                </CForm>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      </CContainer>
     </div>
   );
 };

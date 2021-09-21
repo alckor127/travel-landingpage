@@ -1,14 +1,32 @@
-import React, { useCallback, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useCallback, useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import {
+  CAlert,
+  CButton,
+  CCard,
+  CCardBody,
+  CCol,
+  CContainer,
+  CForm,
+  CInput,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
+  CRow,
+} from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { Form, FormLabel, FormControl } from "../../components/form";
-import { Button } from "../../components/button";
 import { AuthContext } from "../../contexts";
 import { AuthAction } from "../../redux/actions";
 
 const Login = () => {
+  const [error, setError] = useState({
+    show: false,
+    code: undefined,
+    message: undefined,
+  });
+
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -24,82 +42,102 @@ const Login = () => {
 
   const onSubmit = useCallback(
     (data) => {
-      dispatch(AuthAction.login(data.username, data.password)).then(
-        (res) => {
-          console.log("res", res);
+      dispatch(AuthAction.login(data.username, data.password))
+        .then((res) => {
+          console.log("res: ", res);
+          setError({ ...error, show: false });
 
-          setSession({ token: true });
-
-          if (res && res.content && res.content.token) {
+          if (res.content && res.content.token) {
             setSession(res.content);
-
             history.push("/");
           }
-
           reset();
-        },
-        (err) => {
-          console.log("err", err);
-        }
-      );
+        })
+        .catch((err) => {
+          setError({
+            show: true,
+            code: err.response.data.code || err.response.status,
+            message: err.response.data.message || err.response.statusText,
+          });
+          reset();
+        });
     },
     [dispatch]
   );
 
   return (
-    <div
-      className="login__wrapper"
-      style={{
-        backgroundImage: `url(${require("../../../images/login-background.jpg")})`,
-      }}
-    >
-      <div className="login__container container">
-        <Form className="login__form card" onSubmit={handleSubmit(onSubmit)}>
-          <h3 className="login__form-title card-title">Sign in</h3>
-          <FormLabel htmlFor="username">E-mail address</FormLabel>
-          <div className="login__form-group">
-            <CIcon name="cil-user" />
-            <FormControl
-              placeholder="E-mail address"
-              className="login__form-control"
-              autoComplete="off"
-              {...register("username")}
-            />
-          </div>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <div className="login__form-group">
-            <CIcon name="cil-lock-locked" />
-            <FormControl
-              type="password"
-              placeholder="Password"
-              className="login__form-control"
-              autoComplete="off"
-              {...register("password")}
-            />
-          </div>
-          <Button
-            type="submit"
-            color="danger"
-            className="login__button"
-            disabled={isSubmitted}
-            round
-          >
-            {isSubmitted ? "Signing in..." : "Sign in"}
-          </Button>
-          <Link
-            to="/password-reset"
-            className="button button-link button-danger login__link"
-          >
-            Forgot password?
-          </Link>
-        </Form>
-        <div className="login__footer">
-          <h6>
-            © 2021, MADE WITH{" "}
-            <CIcon name="bi-heart" className="login__footer-icon" /> BY ZIMA
-          </h6>
-        </div>
-      </div>
+    <div className="c-app c-default-layout flex-row align-items-center">
+      <CContainer>
+        <CRow className="justify-content-center">
+          <CCol md="5">
+            <CAlert
+              color="danger"
+              closeButton
+              show={error.show}
+              onShowChange={(value) => setError({ ...error, show: value })}
+            >
+              <strong>{error.code}:</strong> {error.message}
+            </CAlert>
+            <CCard className="p-4">
+              <CCardBody>
+                <CForm onSubmit={handleSubmit(onSubmit)}>
+                  <h1>Login</h1>
+                  <p className="text-muted">Sign In to your account</p>
+                  <CInputGroup className="mb-3">
+                    <CInputGroupPrepend>
+                      <CInputGroupText>
+                        <CIcon name="cil-user" />
+                      </CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInput
+                      type="text"
+                      name="username"
+                      placeholder="Email address"
+                      autoComplete="off"
+                      innerRef={register()}
+                    />
+                  </CInputGroup>
+                  <CInputGroup className="mb-4">
+                    <CInputGroupPrepend>
+                      <CInputGroupText>
+                        <CIcon name="cil-lock-locked" />
+                      </CInputGroupText>
+                    </CInputGroupPrepend>
+                    <CInput
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                      autoComplete="off"
+                      innerRef={register()}
+                    />
+                  </CInputGroup>
+                  <CRow>
+                    <CCol sm="6">
+                      <CButton
+                        type="submit"
+                        color="primary"
+                        className="px-4"
+                        disabled={isSubmitted}
+                      >
+                        {isSubmitted ? "Signing in..." : "Sign in"}
+                      </CButton>
+                    </CCol>
+                    <CCol sm="6" className="text-right">
+                      <CButton
+                        color="link"
+                        className="px-0"
+                        onClick={() => history.push("/password-reset")}
+                      >
+                        Forgot password?
+                      </CButton>
+                    </CCol>
+                  </CRow>
+                </CForm>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      </CContainer>
     </div>
   );
 };

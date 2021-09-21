@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Preloading from "./components/loading/preloading";
+import { Preloading } from "./components/loading";
 import { PrivateRoute } from "./components/route";
 import { AppProvider } from "./providers";
 // layouts
