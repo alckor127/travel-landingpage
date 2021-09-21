@@ -33,11 +33,11 @@ class AttractivePlaceController extends ApiController
         try
         {
             $criteria = $request->query->get("criteria");
-            $orderBy = $request->query->get("orderBy") ? $request->query->get("orderBy") : null;
-            $limit = $request->query->get("limit") ? $request->query->get("limit") : false;
-            $offset = $request->query->get("offset") ? $request->query->get("offset") : false;
+            // $orderBy = $request->query->get("orderBy") ? $request->query->get("orderBy") : null;
+            // $limit = $request->query->get("limit") ? $request->query->get("limit") : false;
+            // $offset = $request->query->get("offset") ? $request->query->get("offset") : false;
 
-            $data = $this->repository->findBy($criteria, $orderBy, $limit, $offset);
+            $data = $this->repository->findBy($criteria);
             $data = $this->repository->transformAll($data);
 
             return $this->respond($data);
@@ -87,8 +87,9 @@ class AttractivePlaceController extends ApiController
 
             $data->setName($request->request->get("name"));
             $data->setCountry($request->request->get("country"));
-            $data->setImages($request->request->get("images"));
+            $data->setImage($request->request->get("image"));
             $data->setPrice($request->request->get("price"));
+            $data->setStars($request->request->get("stars"));
             $data->setStatus($request->request->get("status"));
             $data->setCreatedAt($this->now);
 
@@ -122,8 +123,9 @@ class AttractivePlaceController extends ApiController
             
             $data->setName($request->request->get("name"));
             $data->setCountry($request->request->get("country"));
-            $data->setImages($request->request->get("images"));
+            $data->setImage($request->request->get("image"));
             $data->setPrice($request->request->get("price"));
+            $data->setStars($request->request->get("stars"));
             $data->setStatus($request->request->get("status"));
             $data->setUpdatedAt($this->now);
 

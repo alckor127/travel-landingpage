@@ -19,13 +19,15 @@ class AttractivePlaceRepository extends ServiceEntityRepository
         parent::__construct($registry, AttractivePlace::class);
     }
 
-    public function transform(Product $data)
+    public function transform(AttractivePlace $data)
     {
         return [
             "id" => $data->getId(),
             "name" => $data->getName(),
             "country" => $data->getCountry(),
-            "images" => $data->getImages(),
+            "image" => $data->getImage(),
+            "price" => $data->getPrice(),
+            "stars" => $data->getStars(),
             "status" => $data->getStatus(),
             "createdAt" => $data->getCreatedAt(),
             "updatedAt" => $data->getUpdatedAt(),

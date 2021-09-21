@@ -49,7 +49,7 @@ const AttractivePlaces = () => {
             <div className="card-header-actions">
               <CButton
                 color="primary"
-                onClick={() => history.push("/attractive-place/new")}
+                onClick={() => history.push("/attractive-places/new")}
               >
                 Agregar
               </CButton>{" "}
@@ -78,7 +78,41 @@ const AttractivePlaces = () => {
                         <td>{item.name}</td>
                         <td>{item.country}</td>
                         <td>{item.price}</td>
-                        <td>A</td>
+                        <td>
+                          <CButton
+                            color="dark"
+                            size="sm"
+                            onClick={() =>
+                              history.push(`/attractive-places/edit/${item.id}`)
+                            }
+                          >
+                            <CIcon name="bi-pencil" size="sm" />
+                          </CButton>
+                          <CButton
+                            color="danger"
+                            size="sm"
+                            onClick={() => {
+                              confirm(
+                                "Remove record",
+                                "Are you sure you want to remove this record?"
+                              )
+                                .then(() => {
+                                  dispatch(
+                                    AttractivePlaceAction.remove(item.id)
+                                  )
+                                    .then((res) => {
+                                      toast.success(res.message);
+                                    })
+                                    .catch((err) => {
+                                      toast.error(err.message);
+                                    });
+                                })
+                                .catch(() => console.log("Confirm cancel"));
+                            }}
+                          >
+                            <CIcon name="bi-trash" size="sm" />
+                          </CButton>
+                        </td>
                       </tr>
                     ))
                   ) : (
