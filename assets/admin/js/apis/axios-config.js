@@ -34,6 +34,18 @@ axios.interceptors.response.use(
   (error) => {
     console.log("interceptors.error", error.response);
 
+    if (error.response.status === 401) {
+      const { confirm } = require("../components/confirm");
+
+      confirm(
+        "Session expired",
+        "Your session has expired. You must login again.",
+        { enableCancel: false }
+      ).then(() => {
+        window.location.replace("/admin/login");
+      });
+    }
+
     return Promise.reject(error);
   }
 );

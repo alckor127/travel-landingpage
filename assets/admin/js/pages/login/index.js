@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -40,30 +40,26 @@ const Login = () => {
     reset,
   } = useForm();
 
-  const onSubmit = useCallback(
-    (data) => {
-      dispatch(AuthAction.login(data.username, data.password))
-        .then((res) => {
-          console.log("res: ", res);
-          setError({ ...error, show: false });
+  const onSubmit = (data) => {
+    dispatch(AuthAction.login(data.username, data.password))
+      .then((res) => {
+        setError({ ...error, show: false });
 
-          if (res.content && res.content.token) {
-            setSession(res.content);
-            history.push("/");
-          }
-          reset();
-        })
-        .catch((err) => {
-          setError({
-            show: true,
-            code: err.response.data.code || err.response.status,
-            message: err.response.data.message || err.response.statusText,
-          });
-          reset();
+        if (res.content && res.content.token) {
+          setSession(res.content);
+          history.push("/");
+        }
+        reset();
+      })
+      .catch((err) => {
+        setError({
+          show: true,
+          code: err.response.data.code || err.response.status,
+          message: err.response.data.message || err.response.statusText,
         });
-    },
-    [dispatch]
-  );
+        reset();
+      });
+  };
 
   return (
     <div className="c-app c-default-layout flex-row align-items-center">

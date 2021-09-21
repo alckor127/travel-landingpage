@@ -3,10 +3,10 @@ import { AuthContext } from "../contexts";
 import { useStorage } from "../hooks";
 
 const AuthProvider = ({ children }) => {
-  const [session, setSession] = useStorage("session");
+  const [session, setSession, removeSession] = useStorage("session");
 
   return (
-    <AuthContext.Provider value={{ session, setSession }}>
+    <AuthContext.Provider value={{ session, setSession, removeSession }}>
       {children}
     </AuthContext.Provider>
   );

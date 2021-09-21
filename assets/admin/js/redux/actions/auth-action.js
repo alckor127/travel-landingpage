@@ -17,6 +17,20 @@ const AuthAction = {
       }
     };
   },
+  logout: () => {
+    return async (dispatch) => {
+      try {
+        dispatch({
+          type: "LOGOUT",
+          payload: false,
+        });
+
+        return true;
+      } catch (err) {
+        return err;
+      }
+    };
+  },
 };
 
 export { AuthAction };

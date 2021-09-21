@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   CDropdown,
   CDropdownItem,
@@ -14,12 +16,29 @@ import {
   CLink,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { AppContext } from "../../contexts";
+import { AppContext, AuthContext } from "../../contexts";
+import { AuthAction } from "../../redux/actions";
 // routes config
 import { routes } from "../../routes";
 
 const Header = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
   const { sidebarShow, setSidebarShow } = useContext(AppContext);
+  const { removeSession } = useContext(AuthContext);
+
+  const logout = () => {
+    dispatch(AuthAction.logout())
+      .then((res) => {
+        if (res) {
+          removeSession();
+          history.push("/");
+        }
+      })
+      .catch((err) => console.log("Layout > Default > Header > logout()", err));
+  };
 
   return (
     <CHeader withSubheader>
@@ -74,18 +93,9 @@ const Header = () => {
               <CIcon name="bi-person-circle" className="mfe-2" />
               Gestionar cuenta
             </CDropdownItem>
-            <CDropdownItem>
+            <CDropdownItem onClick={logout}>
               <CIcon name="bi-power" className="mfe-2" />
               Cerrar sesión
-            </CDropdownItem>
-            <CDropdownItem divider />
-            <CDropdownItem>
-              <CIcon name="bi-question-circle" className="mfe-2" />
-              Centro de ayuda
-            </CDropdownItem>
-            <CDropdownItem>
-              <CIcon name="bi-briefcase" className="mfe-2" />
-              Contrata a un experto
             </CDropdownItem>
           </CDropdownMenu>
         </CDropdown>

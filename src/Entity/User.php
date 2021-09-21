@@ -44,9 +44,9 @@ class User implements UserInterface, \Serializable
     private $avatar;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=10)
      */
-    private $isActive;
+    private $status;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -128,14 +128,14 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function getIsActive(): ?bool
+    public function getStatus(): ?string
     {
-        return $this->isActive;
+        return $this->status;
     }
 
-    public function setIsActive(bool $isActive): self
+    public function setStatus(string $status): self
     {
-        $this->isActive = $isActive;
+        $this->status = $status;
 
         return $this;
     }
@@ -183,6 +183,11 @@ class User implements UserInterface, \Serializable
     public function getUsername()
     {
         return $this->email;
+    }
+
+    public function getIsActive()
+    {
+        return $this->status === "ACTIVE" ? true : false;
     }
 
     public function getSalt()
