@@ -23,7 +23,11 @@ class AuthenticationSuccessListener
             "ROLE_SECURITY",
             "ROLE_SECURITY_USER",
             // "ROLE_SECURITY_PROFILE",
-            "ROLE_ATTRACTIVE_PLACE"
+            "ROLE_ATTRACTIVE_PLACE",
+            "ROLE_ATTRACTIVE_PLACE_CREATE",
+            "ROLE_ATTRACTIVE_PLACE_UPDATE",
+            "ROLE_ATTRACTIVE_PLACE_DELETE",
+            // "ROLE_ATTRACTIVE_PLACE_IMPORT"
         ];
 
         $event->setData([

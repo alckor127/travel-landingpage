@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import { confirm } from "../../components/confirm";
 import { Loading } from "../../components/loading";
 import { AttractivePlaceAction } from "../../redux/actions";
+import renderComponentByRole from "../../utils/render-component-by-role";
 
 const AttractivePlaces = () => {
   const [loading, setLoading] = useState(false);
@@ -47,15 +48,21 @@ const AttractivePlaces = () => {
           <CCardHeader className="d-flex align-items-center justify-content-between">
             <strong>Atractivos turísticos</strong>
             <div className="card-header-actions">
-              <CButton
-                color="primary"
-                onClick={() => history.push("/attractive-places/new")}
-              >
-                Agregar
-              </CButton>{" "}
-              <CButton variant="ghost" color="dark">
-                Importar
-              </CButton>
+              {renderComponentByRole(
+                "ROLE_ATTRACTIVE_PLACE_CREATE",
+                <CButton
+                  color="primary"
+                  onClick={() => history.push("/attractive-places/new")}
+                >
+                  Agregar
+                </CButton>
+              )}
+              {renderComponentByRole(
+                "ROLE_ATTRACTIVE_PLACE_IMPORT",
+                <CButton variant="ghost" color="dark">
+                  Importar
+                </CButton>
+              )}
             </div>
           </CCardHeader>
           <CCardBody>
@@ -79,39 +86,47 @@ const AttractivePlaces = () => {
                         <td>{item.country}</td>
                         <td>{item.price}</td>
                         <td>
-                          <CButton
-                            color="dark"
-                            size="sm"
-                            onClick={() =>
-                              history.push(`/attractive-places/edit/${item.id}`)
-                            }
-                          >
-                            <CIcon name="bi-pencil" size="sm" />
-                          </CButton>
-                          <CButton
-                            color="danger"
-                            size="sm"
-                            onClick={() => {
-                              confirm(
-                                "Remove record",
-                                "Are you sure you want to remove this record?"
-                              )
-                                .then(() => {
-                                  dispatch(
-                                    AttractivePlaceAction.remove(item.id)
-                                  )
-                                    .then((res) => {
-                                      toast.success(res.message);
-                                    })
-                                    .catch((err) => {
-                                      toast.error(err.message);
-                                    });
-                                })
-                                .catch(() => console.log("Confirm cancel"));
-                            }}
-                          >
-                            <CIcon name="bi-trash" size="sm" />
-                          </CButton>
+                          {renderComponentByRole(
+                            "ROLE_ATTRACTIVE_PLACE_UPDATE",
+                            <CButton
+                              color="dark"
+                              size="sm"
+                              onClick={() =>
+                                history.push(
+                                  `/attractive-places/edit/${item.id}`
+                                )
+                              }
+                            >
+                              <CIcon name="bi-pencil" size="sm" />
+                            </CButton>
+                          )}
+                          {renderComponentByRole(
+                            "ROLE_ATTRACTIVE_PLACE_DELETE",
+                            <CButton
+                              color="danger"
+                              size="sm"
+                              onClick={() => {
+                                confirm(
+                                  "Remove record",
+                                  "Are you sure you want to remove this record?"
+                                )
+                                  .then(() => {
+                                    dispatch(
+                                      AttractivePlaceAction.remove(item.id)
+                                    )
+                                      .then((res) => {
+                                        toast.success(res.message);
+                                      })
+                                      .catch((err) => {
+                                        toast.error(err.message);
+                                      });
+                                  })
+                                  .catch(() => console.log("Confirm cancel"));
+                              }}
+                            >
+                              <CIcon name="bi-trash" size="sm" />
+                            </CButton>
+                          )}
                         </td>
                       </tr>
                     ))
