@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { AppContext } from "../contexts";
-import { useStorage } from "../hooks";
+// import { useStorage } from "../hooks";
 
 const AppProvider = ({ children }) => {
-  const [sidebarShow, setSidebarShow] = useStorage("sidebarShow");
-  const [unfoldable, setUnfoldable] = useStorage("unfoldable");
+  const [sidebarShow, setSidebarShow] = useState("responsive");
+  const [minimize, setMinimize] = useState(false);
 
   return (
     <AppContext.Provider
-      value={{ sidebarShow, setSidebarShow, unfoldable, setUnfoldable }}
+      value={{ sidebarShow, setSidebarShow, minimize, setMinimize }}
     >
       {children}
     </AppContext.Provider>
