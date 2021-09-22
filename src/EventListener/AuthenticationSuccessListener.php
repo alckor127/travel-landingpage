@@ -17,7 +17,14 @@ class AuthenticationSuccessListener
         $data["id"] = $user->getId();
         $data["name"] = $user->getName();
         $data["email"] = $user->getEmail();
-        $data["isActive"] = $user->getIsActive();
+        $data["status"] = $user->getStatus();
+        $data["roles"] = [
+            "ROLE_DASHBOARD",
+            "ROLE_SECURITY",
+            "ROLE_SECURITY_USER",
+            // "ROLE_SECURITY_PROFILE",
+            "ROLE_ATTRACTIVE_PLACE"
+        ];
 
         $event->setData([
             "code" => $event->getResponse()->getStatusCode(),
