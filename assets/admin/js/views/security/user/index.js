@@ -52,7 +52,7 @@ const Users = () => {
                 "ROLE_SECURITY_USER_CREATE",
                 <CButton
                   color="primary"
-                  onClick={() => history.push("/attractive-places/new")}
+                  onClick={() => history.push("/security/users/new")}
                 >
                   Agregar
                 </CButton>
@@ -92,9 +92,7 @@ const Users = () => {
                               color="dark"
                               size="sm"
                               onClick={() =>
-                                history.push(
-                                  `/attractive-places/edit/${item.id}`
-                                )
+                                history.push(`/security/users/edit/${item.id}`)
                               }
                             >
                               <CIcon name="bi-pencil" size="sm" />

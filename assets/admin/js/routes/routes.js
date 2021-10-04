@@ -6,6 +6,7 @@ const AttractivePlaceForm = React.lazy(() =>
   import("../views/attractive-places/form")
 );
 const User = React.lazy(() => import("../views/security/user"));
+const UserForm = React.lazy(() => import("../views/security/user/form"));
 
 const routes = [
   { path: "/dashboard", exact: true, name: "Inicio", component: Dashboard },
@@ -18,7 +19,7 @@ const routes = [
   {
     path: ["/attractive-places/new", "/attractive-places/edit/:id(\\d+)"],
     exact: true,
-    name: "Atractivos turísticos formulario",
+    name: "Atractivo turístico formulario",
     component: AttractivePlaceForm,
   },
   {
@@ -26,6 +27,12 @@ const routes = [
     exact: true,
     name: "Usuarios",
     component: User,
+  },
+  {
+    path: ["/users/new", "/users/edit/:id(\\d+)"],
+    exact: true,
+    name: "Usuario formulario",
+    component: UserForm,
   },
 ];
 
