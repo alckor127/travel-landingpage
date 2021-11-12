@@ -7,7 +7,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
   Encore.configureRuntimeEnvironment(process.env.NODE_ENV || "dev");
 }
 
-// Define the website configuration
+// Define website configuration
 Encore.setOutputPath("public/build/website")
   .setPublicPath("/build/website")
   .addEntry("bundle", "./assets/website/js/bundle.js")
@@ -40,7 +40,7 @@ websiteConfig.name = "websiteConfig";
 // Resert Encore to build the admin configuration
 Encore.reset();
 
-///// afsafasfs
+// Define admin configuration
 Encore.setOutputPath("public/build/admin")
   .setPublicPath("/build/admin")
   .addEntry("bundle", "./assets/admin/js/bundle.js")
